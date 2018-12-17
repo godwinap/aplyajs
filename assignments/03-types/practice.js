@@ -1,7 +1,6 @@
 // Write a function called isDivisibleBy3 which returns `true` if a number is
 // divisible by 3, and `false` otherwise.
-var isDivisibleBy3 = function () {
-};
+var isDivisibleBy3 = num => num % 3 === 0;
 
 
 // Write a function that converts a Celsius temperature to Fahrenheit,
@@ -10,11 +9,9 @@ var isDivisibleBy3 = function () {
 // convert the other way, you subtract 32, and then multiply by
 // 5. Finally, you divide by 9. The division operator in JavaScript is
 // `/`.
-var celsToFahr = function () {
-};
+var celsToFahr = cels => ((cels * 9) / 5) + 32
 
-var fahrToCels = function () {
-};
+var fahrToCels = cels => ((celc - 32) * 5) / 5
 
 
 // Write a function called `randUpTo` that accepts a number and returns a random
@@ -31,14 +28,12 @@ var fahrToCels = function () {
 //
 //     randUpTo(1000);
 //     //=> 236
-var randUpTo = function () {
-};
+var randUpTo = range => parseInt(Math.random() * range)
 
 
 // Write a function called `randBetween` that accepts two numbers representing a
 // range and returns a random whole number between those two numbers.
-var randBetween = function () {
-};
+var randBetween = (StartRange, EndRange) => parseInt(Math.random() * EndRange) + StartRange
 
 
 // The standard card suits are clubs, diamonds, hearts and spades. Write a
@@ -56,8 +51,8 @@ var randBetween = function () {
 //
 //     isSuit("coins");
 //     //=> false
-var isSuit = function () {
-};
+var isSuit = suit => ['KING', 'JOKER', 'DIAMONDS', 'QUEEN', 'HEARTS', 'SPADES', 'CLUBS'].includes(suit.toUpperCase())
+
 
 
 // The valid ranks for a card are two, three, four, five, six, seven, eight,
@@ -72,15 +67,13 @@ var isSuit = function () {
 //
 //     isRank("one");
 //     //=> false
-var isRank = function () {
-};
+var isRank = rank => ['two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king', 'ace'].includes(rank.toLowerCase())
 
 
 // Using the previous two functions, write a function called isCard that accepts
 // two arguments, a rank and a suit, and returns true if they are valid for a card,
 // and false otherwise.
-var isCard = function () {
-};
+var isCard = card => isRank(card) || isSuit(card);
 
 
 // Write a function called `isCapitalized` that accepts a string and returns
@@ -88,8 +81,7 @@ var isCard = function () {
 // Remember that you can use strings in comparisons in the same way that you can
 // use numbers, and the ordering is alphabetical (with capital letters having lower
 // values than their lower-case counterparts).
-var isCapitalized = function () {
-};
+var isCapitalized = str => str.charAt(0) === str.charAt(0).toUpperCase();
 
 
 // Write a function that accepts a string representation of an HTML element (it
@@ -101,8 +93,7 @@ var isCapitalized = function () {
 //
 //     getHTMLText("<li>this is a list item</li>");
 //     //=> this is a list item
-var getHTMLText = function () {
-};
+var getHTMLText = str => str.match(/<.+>(.+)<\/.+>/)[1];
 
 
 // Write a function that determines if a string represents an HTML element. This
@@ -122,5 +113,4 @@ var getHTMLText = function () {
 //
 // It may help in this case to look up the `lastIndexOf` method on the string
 // objects.
-var isHTMLElement = function () {
-};
+var isHTMLElement = elmStr => /<.+>(.+)<\/.+>/.test(elmStr);
