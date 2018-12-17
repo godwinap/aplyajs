@@ -1,7 +1,6 @@
 // (example) Write a function that accepts two number arguments and adds them
 // together.
-var add = function () {
-};
+var add = (x, y) => x + y;
 
 
 // Create a function that takes in a cost and a quantity and outputs the total
@@ -9,8 +8,7 @@ var add = function () {
 //
 //     var preTaxTotal = totalCost(5, 5.99); // 5 items at 5.99
 //     //=> 29.950000000000003
-var totalCost = function () {
-};
+var totalCost = (quantity, price) => quantity * price;
 
 
 // Write a function that takes a rank and a suit as input, and returns a string
@@ -21,8 +19,7 @@ var totalCost = function () {
 //
 //     cardString("queen", "hearts");
 //     //=> queen of hearts
-var cardString = function () {
-};
+var cardString = (rank, suit) => `${rank} of ${suit}`;
 
 
 // Write a function called `openTag` that accepts a tag name and returns an
@@ -33,8 +30,7 @@ var cardString = function () {
 //
 //     openTag("div");
 //     //=> <div>
-var openTag = function () {
-};
+var openTag = (TagName) => `<${TagName}>`;
 
 
 // Similarly, write a function called `closingTag` that returns the closing HTML tag
@@ -45,8 +41,7 @@ var openTag = function () {
 //
 //     closeTag("div");
 //     //=> </div>
-var closeTag = function () {
-};
+var closeTag = (TagName) => `<\\${TagName}>`;
 
 
 // Write a function called `toTagString` that accepts two inputs: a tag name,
@@ -62,5 +57,4 @@ var closeTag = function () {
 //
 // Although I won't be testing for this, your code should re-use the functions that
 // you created in the previous section.
-var toTagString = function () {
-};
+var toTagString = (TagName, text) => `<${TagName}> ${text} <\\${TagName}>`
