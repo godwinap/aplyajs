@@ -12,8 +12,7 @@
 //
 //     passwordStrength("helloone");
 //     //=> medium
-var passwordStrength = function () {
-};
+var passwordStrength = password => password.length > 10 ? 'strong' : password.length >= 7 && password.length <= 10 ? 'medium' : 'weak';
 
 
 // A year is a leap year if it is divisible by 4, unless it is also divisible by
@@ -37,8 +36,7 @@ var passwordStrength = function () {
 //
 //      isLeapYear("hello");
 //      //=> THAT'S NOT A NUMBER!
-var isLeapYear = function () {
-};
+var isLeapYear = year => isNaN(year) ? "THAT'S NOT A NUMBER!" : year % 4 === 0;
 
 
 // Write a function that accepts three strings and input, and returns the one
@@ -57,8 +55,7 @@ var isLeapYear = function () {
 //
 //      firstInDictionary("whale", 5, 10);
 //      //=> ALL THREE ARGS MUST BE STRINGS!
-var firstInDictionary = function () {
-};
+var firstInDictionary = (...words) => words.every(word => typeof word === 'string') ? words.sort()[0] : "ALL THREE ARGS MUST BE STRINGS!";
 
 
 // Write a function that extracts a tag from a string representing an HTML
@@ -71,21 +68,18 @@ var firstInDictionary = function () {
 //
 //     getTagName("<p>this is wrong</div>");
 //     //=> Error: Not an HTML Element!
-var getTagName = function () {
-};
+var getTagName = elmStr => elmStr.match(/<(.+)>(.+)<\/(.+)>/)[1] === elmStr.match(/<(.+)>(.+)<\/(.+)>/)[3] ? elmStr.match(/<(.+)>(.+)<\/(.+)>/)[1] : "Error: Not an HTML Element!";
 
 
 // Re-implement our improveTweet function so it can generate any of lol, omg,
 // lmao, and rofl.
-var improveTweet = function () {
-};
+var improveTweet = () => ["lol", "omg", "lmao", "rofl"][parseInt(Math.random() * ["lol", "omg", "lmao", "rofl"].length)];
 
 
 // Write a function called `isQuestion` that returns true if the input is a
 // string and it ends in a question mark. We'll use this function in the next
 // practice problem.
-var isQuestion = function () {
-};
+var isQuestion = question => typeof question === 'string' && question.charAt(question.length - 1) === "?";
 
 
 // The Magic 8 Ball is a classic toy that allows you to ask a yes/no
@@ -111,8 +105,16 @@ var isQuestion = function () {
 //
 //     magic8Ball("Is this a question?");
 //     //=> Signs point to yes
-var magic8Ball = function () {
-};
+var magic8Ball = input => {
+    const posibilityArr = ["positive", "positive", "positive", "positive", "positive", "positive", "neutral", "neutral", "neutral", "negative", "negative", "negative"]
+    const answers = {
+        positive: ["Yes", "I think, yeah..", "Sure", "Yeah", "Ofcourse", "Absolutely!", "Yup", "Dfinitely", "100%"],
+        negative: ["No", "Nope", "I dont think so", "Naah!", "It dosen't go like that", "Not quite true", "Very doubtful", "My reply is no"],
+        neutral: ["May be.. May be not..", "It could be yes or no", "We cant tell", "Can't say", "Not Sure"]
+    }
+    const answerSet = answers[posibilityArr[parseInt(Math.random() * 11)]];
+    return isQuestion(input) ? answerSet[parseInt(Math.random() * answerSet.length)] : "THAT DOESN'T SOUND LIKE A QUESTION!";
+}
 
 
 // Suppose we wanted to randomly interject "-lol-" or "-omg-" into a random
@@ -151,20 +153,11 @@ var magic8Ball = function () {
 //     var strWithInterjection = beginning + "-lol-" + end;
 //
 // You just have to generalize this to an arbitrary index and wrap it in a function.
-var interjectAt = function () {
-};
+var interjectAt = function () {};
 
 
 // Now that you have a robust function to do your interjection, your actual
 // `randomInterjection` function consists of generating a random message and a
 // random location within the string, and then calling into the `interjectAt`
 // function with the appropriate arguments.
-var randomInterject = function () {
-};
-
-
-
-
-
-
-
+var randomInterject = function () {};
