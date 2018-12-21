@@ -153,11 +153,11 @@ var magic8Ball = input => {
 //     var strWithInterjection = beginning + "-lol-" + end;
 //
 // You just have to generalize this to an arbitrary index and wrap it in a function.
-var interjectAt = function () {};
+var interjectAt = (interjection, index, str) => typeof interjection === 'string' && typeof index === 'number' && typeof str === 'string' ?str.length > index ? `${str.slice(0,index)} -${interjection}- ${str.slice(index,str.length)}`: (() => {throw "the string doesn't have that many letters!"})() : (() => {throw "expected first arg to be a string, second arg to be a number and third arg to be a string"})();
 
 
 // Now that you have a robust function to do your interjection, your actual
 // `randomInterjection` function consists of generating a random message and a
 // random location within the string, and then calling into the `interjectAt`
 // function with the appropriate arguments.
-var randomInterject = function () {};
+var randomInterject = str => interjectAt(improveTweet(), parseInt(Math.random() * (str.length - 1)), str);

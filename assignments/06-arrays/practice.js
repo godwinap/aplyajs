@@ -14,8 +14,7 @@
 //     containsTwice(10, [10, 10, 10, 10, 10]);
 //     //=> false
 //
-var containsTwice = function () {
-};
+var containsTwice = (val, arr) => arr.filter(i => i === val).length === 2;
 
 
 // Generalize the previous solution into a function called `containsNTimes` so
@@ -30,8 +29,7 @@ var containsTwice = function () {
 //     containsNTimes(0, 5, [ 1, 2, 3, 4, 5 ]);
 //     //=> false
 //
-var containsNTimes = function () {
-};
+var containsNTimes = (n, val, arr) => arr.filter(i => i === val).length === n;
 
 
 // Write a function called `atLeastOneEven` that returns `true` if at least one of
@@ -50,8 +48,7 @@ var containsNTimes = function () {
 //     atLeastOneEven("hello");
 //     //=> input should be an array!
 //
-var atLeastOneEven = function () {
-};
+var atLeastOneEven = arr => Array.isArray(arr) ? arr.some(num => num % 2 === 0) : (()=>{throw "input should be an Array!"})();
 
 
 // Write a function called `allStrings` that accepts an array as an argument and
@@ -70,8 +67,7 @@ var atLeastOneEven = function () {
 // Although the tests will not be checking for this, try to make your loop exit
 // as soon as it finds a non-string entry in the array.
 //
-var allStrings = function () {
-};
+var allStrings = arr => Array.isArray(arr) ? arr.every(str => typeof str === 'string') : (()=>{throw "input should be an Array!"})();
 
 
 // Write a function that accepts two arrays, and returns true if any of the
@@ -96,8 +92,7 @@ var allStrings = function () {
 // as soon as it finds an element in the first array that appears twice in the second
 // array.
 //
-var containsAnyTwice = function () {
-};
+var containsAnyTwice = (Lookups, dataset) => Array.isArray(Lookups) && Array.isArray(dataset) ? Lookups.some(i => containsTwice(i, dataset)) : (()=>{throw "containsAnyTwice expects two arguments, both of which should be an array."})();
 
 
 // In the previous problem, we determined whether or not an array contains any

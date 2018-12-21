@@ -33,7 +33,7 @@ var randUpTo = range => parseInt(Math.random() * range)
 
 // Write a function called `randBetween` that accepts two numbers representing a
 // range and returns a random whole number between those two numbers.
-var randBetween = (StartRange, EndRange) => parseInt(Math.random() * EndRange) + StartRange
+var randBetween = (StartRange, EndRange) => parseInt(Math.random() * (EndRange - StartRange)) + StartRange
 
 
 // The standard card suits are clubs, diamonds, hearts and spades. Write a

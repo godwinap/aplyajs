@@ -17,8 +17,7 @@
 //    isVowel("Y");
 //    //=> false
 //
-var isVowel = function () {
-};
+var isVowel = letter => typeof letter === 'string' && ['a','e','i','o','u'].includes(letter.toLowerCase());
 
 
 // Write a function called `isLowerCaseLetter` that returns `true` if
@@ -39,8 +38,7 @@ var isVowel = function () {
 //    isLowerCaseLetter(true);
 //    //=> false
 //
-var isLowerCaseLetter = function () {
-};
+var isLowerCaseLetter = letter => typeof letter === 'string' && letter.length === 1 && letter === letter.toLowerCase();
 
 
 // Write a function called `sumUpTo` so that it accepts a positive number `n`
@@ -59,8 +57,7 @@ var isLowerCaseLetter = function () {
 //     sumUpTo(-10);
 //     //=> input must be a zero or a positive number!
 //
-var sumUpTo = function () {
-};
+var sumUpTo = range => typeof range === 'number' && range >= 0 ? (range * (range + 1)) / 2 : "input must be a zero or a positive number!"; 
 
 
 // Write a function called `sumAToB` so that it accepts two parameters
@@ -82,8 +79,7 @@ var sumUpTo = function () {
 //     sumAToB("hello", "world");
 //     //=> inputs should be numbers!
 //
-var sumAToB = function () {
-};
+var sumAToB = (a,b) => (typeof a === 'number' && typeof b === 'number') ? sumUpTo(Math.max(Math.abs(a), Math.abs(b))) - sumUpTo((a > 0 && b > 0 ) ? Math.min(Math.abs(a), Math.abs(b)) - 1 : Math.min(Math.abs(a), Math.abs(b))) : "inputs should be numbers!";
 
 
 // Write a function called `countVowels` that accepts a string and
@@ -103,8 +99,7 @@ var sumAToB = function () {
 //     countVowels(true);
 //     //=> input to countVowels must be a string!
 //
-var countVowels = function () {
-};
+var countVowels = str => typeof str === 'string' ? str.split("").reduce((count, letter)=> isVowel(letter) ? count+1 : count, 0) : "input to countVowels must be a string!";
 
 
 // Write a function that accepts a string and returns the same string, only in
@@ -122,8 +117,7 @@ var countVowels = function () {
 //     reverse(true);
 //     //=> input to reverseString must be an string!
 //
-var reverseString = function () {
-};
+var reverseString = str => typeof str === 'string' ? str.split("").reverse().join(""):"input to reverseString must be an string!";
 
 
 // A number is a prime number if it is only evenly divisible by 1 and itself
@@ -149,8 +143,7 @@ var reverseString = function () {
 //     isPrime(-101);
 //     //=> false
 //
-var isPrime = function () {
-};
+var isPrime = p => typeof p === 'number' && p > 1 && !Array(p - 1).fill(0).map((key,index)=>index+1).some(key => key !== 1 && p % key === 0);
 
 
 // Using the `isPrime` function, write a function that accepts a number as
@@ -171,8 +164,7 @@ var isPrime = function () {
 //     sumPrimesUpTo("whatever");
 //     //=> input should be a number
 //
-var sumPrimesUpTo = function () {
-};
+var sumPrimesUpTo = p => typeof p === 'number' ? Array(p).fill(0).map((key,index)=>index+1).filter(num => num !== 1 && isPrime(num)).reduce((total, num)=> total + num, 0): "input should be a number";
 
 
 // Using the `isPrime` function, write a function that takes in a
@@ -196,8 +188,18 @@ var sumPrimesUpTo = function () {
 //     sumOfFirstNPrimes(-10);
 //     //=> input number should be zero or a positive number!
 //
-var sumOfFirstNPrimes = function () {
-};
+var sumOfFirstNPrimes = n => {
+    if(typeof n !== 'number' || n < 0) return  "input number should be zero or a positive number!";
+    const PrimeArr = [];
+    let i = 2;
+    while (PrimeArr.length < n) {
+      if (isPrime(i)) {
+        PrimeArr.push(i)
+      }
+      i++;
+    } 
+    return PrimeArr.reduce((total , primeNumber)=> total + primeNumber , 0);
+}
 
 
 // A _palindrome_ is a string that reads the same forwards and backwards. Write
@@ -222,11 +224,9 @@ var sumOfFirstNPrimes = function () {
 //     removeNonLetters("this is a string; it has some punctuation!");
 //     //=> thisisastringithassomepunctuation
 //
-var removeNonLetters = function () {
-};
+var removeNonLetters = str => typeof str === 'string' ? str.match(/[a-zA-Z]/g).join("") :   "Not A String!";
 
 
 // Now use `removeNonLetters`, along with the `reverse` function from above to
 // determine if the string is a palindrome.
-var isPalindrome = function () {
-};
+var isPalindrome = str => typeof str === 'string' ? reverseString(removeNonLetters(str)).toLowerCase() === removeNonLetters(str).toLowerCase() : 'Input must be a string'; 
